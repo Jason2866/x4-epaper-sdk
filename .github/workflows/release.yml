@@ -18,7 +18,7 @@ jobs:
       - name: Create library ZIPs and generate library.json
         run: |
           TAG="${{ github.ref_name }}"
-          REPO="https://github.com/Jason2866/x4-epaper-sdk"
+          REPO="https://github.com/${{ github.repository }}"
           DEPS="[]"
 
           for DIR in libs/display libs/hardware; do
