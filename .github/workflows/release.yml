@@ -22,6 +22,22 @@ jobs:
           zip -r BatteryMonitor.zip BatteryMonitor/
           zip -r SDCardManager.zip SDCardManager/
 
+      - name: Generate versioned library.json
+        run: |
+          TAG=${{ github.ref_name }}
+          REPO="https://github.com/Jason2866/x4-epaper-sdk"
+          jq \
+            --arg tag "$TAG" \
+            --arg repo "$REPO" \
+            '.dependencies = [
+              { "name": "EInkDisplay",   "version": "\($repo)/releases/download/\($tag)/EInkDisplay.zip" },
+              { "name": "InputManager",  "version": "\($repo)/releases/download/\($tag)/InputManager.zip" },
+              { "name": "BatteryMonitor","version": "\($repo)/releases/download/\($tag)/BatteryMonitor.zip" },
+              { "name": "SDCardManager", "version": "\($repo)/releases/download/\($tag)/SDCardManager.zip" }
+            ]' \
+            library.json > library_release.json
+          mv library_release.json library.json
+
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
@@ -32,3 +48,4 @@ jobs:
             InputManager.zip
             BatteryMonitor.zip
             SDCardManager.zip
+            library.json
