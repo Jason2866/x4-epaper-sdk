@@ -35,17 +35,17 @@ Libs should be categorized under `libs/` based on functionality, and then contai
 
 ## 📦 Adding to Your PlatformIO Project
 
-> **No Git submodules needed.** The SDK and all its libraries are published as ZIP archives on every [GitHub Release](https://github.com/Jason2866/x4-epaper-sdk/releases).
+> **No Git submodules needed.** The SDK and all its libraries are published as ZIP archives on every [GitHub Release](https://github.com/open-x4-epaper/community-sdk/releases).
 > PlatformIO downloads and installs them automatically.
 
 Add the SDK to your `platformio.ini`:
 
 ```ini
 lib_deps =
-  https://github.com/Jason2866/x4-epaper-sdk.git
+  https://github.com/open-x4-epaper/community-sdk/releases/latest/download/open-x4-sdk.zip
 ```
 
-PlatformIO will fetch the root `library.json`, which automatically pulls in all individual libraries
+PlatformIO will automatically install all individual libraries
 (`EInkDisplay`, `InputManager`, `BatteryMonitor`, `SDCardManager`, etc.) from the latest release.
 
 Then include the libraries in your project as usual:
@@ -61,7 +61,7 @@ To use a specific release instead of always the latest, reference the versioned 
 
 ```ini
 lib_deps =
-  https://github.com/Jason2866/x4-epaper-sdk/releases/download/v1.0.0/open-x4-sdk.zip
+  https://github.com/open-x4-epaper/community-sdk/releases/download/v1.0.0/open-x4-sdk.zip
 ```
 
 ## 🔄 How Releases Work
